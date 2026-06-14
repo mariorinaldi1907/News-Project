@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Island Daily</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body id="top">
+    <header class="top-strip">
+        <div><strong>Singapore</strong> <span class="chevron">⌄</span><span class="divider"></span>E-paper</div>
+        <div class="top-actions"><a href="#">Subscribe</a><span class="divider"></span><a href="#">Log in</a></div>
+    </header>
+
+    <section class="masthead-wrap">
+        <a class="masthead" href="{{ url_for('home') }}">ISLAND DAILY</a>
+        <button class="membership">★ ID+</button>
+    </section>
+
+    <nav class="nav-bar">
+        <div class="nav-links">
+            <a href="#singapore">Singapore</a>
+            <a href="#business">Business</a>
+            <a href="#world">World</a>
+            <a href="#sport">Sport</a>
+            <a href="#tech">Tech</a>
+            <a href="#opinion">Opinion</a>
+        </div>
+        <div class="menu-button">☰ Menu</div>
+    </nav>
+
+    <main class="page-grid">
+        <section class="main-news">
+            <article class="hero-row">
+                <div class="hero-copy">
+                    <p class="section-label">{{ hero_article.category }}</p>
+                    <h1>{{ hero_article.title }}</h1>
+                    <p>{{ hero_article.summary }}</p>
+                    <a class="read-more" href="{{ url_for('article_page', slug=hero_slug) }}">Read More</a>
+                </div>
+                <a class="hero-image" href="{{ url_for('article_page', slug=hero_slug) }}">
+                    <span>{{ hero_article.category }}</span>
+                </a>
+            </article>
+
+            <section class="secondary-grid">
+                {% for slug, article in articles[:4] %}
+                <article class="mini-card">
+                    <a class="thumb" href="{{ url_for('article_page', slug=slug) }}"><span>{{ article.category }}</span></a>
+                    <div>
+                        <p class="section-label">{{ article.category }}</p>
+                        <h2>{{ article.title }}</h2>
+                        <p>{{ article.summary }}</p>
+                        <a class="read-more small" href="{{ url_for('article_page', slug=slug) }}">Read More</a>
+                    </div>
+                </article>
+                {% endfor %}
+            </section>
+        </section>
+
+        <aside class="sidebar">
+            <h2>Latest headlines <span>›</span></h2>
+            <ul class="headline-list">
+                {% for item in latest_headlines %}
+                <li>
+                    <span>{{ item.time }}</span>
+                    <strong>{{ item.headline }}</strong>
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="trending-box">
+                <h2>Trending</h2>
+                <ol>
+                    {% for slug, article in articles[4:] %}
+                    <li><a href="{{ url_for('article_page', slug=slug) }}">{{ article.title }}</a></li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </aside>
+    </main>
+
+    <section class="category-wrapper">
+        {% for category in categories %}
+        <section id="{{ category|lower }}" class="category-section">
+            <div class="category-header">
+                <h2>{{ category }}</h2>
+                <a href="#top" class="section-jump">Back to top ↑</a>
+            </div>
+
+            <div class="category-grid">
+                {% for slug, article in category_sections[category] %}
+                <article class="category-card">
+                    <a class="category-thumb" href="{{ url_for('article_page', slug=slug) }}">
+                        <span>{{ article.category }}</span>
+                    </a>
+                    <div class="category-copy">
+                        <p class="section-label">{{ article.category }}</p>
+                        <h3><a href="{{ url_for('article_page', slug=slug) }}">{{ article.title }}</a></h3>
+                        <p>{{ article.summary }}</p>
+                        <a class="read-more small" href="{{ url_for('article_page', slug=slug) }}">Read More</a>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </section>
+        {% endfor %}
+    </section>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ article.title }} | Island Daily</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body id="top">
+    <header class="top-strip">
+        <div><strong>Singapore</strong> <span class="chevron">⌄</span><span class="divider"></span>E-paper</div>
+        <div class="top-actions"><a href="#">Subscribe</a><span class="divider"></span><a href="#">Log in</a></div>
+    </header>
+
+    <section class="masthead-wrap article-masthead">
+        <a class="masthead" href="{{ url_for('home') }}">ISLAND DAILY</a>
+    </section>
+
+    <nav class="nav-bar">
+        <div class="nav-links">
+            <a href="{{ url_for('home') }}#singapore">Singapore</a>
+            <a href="{{ url_for('home') }}#business">Business</a>
+            <a href="{{ url_for('home') }}#world">World</a>
+            <a href="{{ url_for('home') }}#sport">Sport</a>
+            <a href="{{ url_for('home') }}#tech">Tech</a>
+            <a href="{{ url_for('home') }}#opinion">Opinion</a>
+        </div>
+        <div class="menu-button">☰ Menu</div>
+    </nav>
+
+    <main class="article-page">
+        <a class="back-link" href="{{ url_for('home') }}">← Back to homepage</a>
+        <p class="section-label">{{ article.category }}</p>
+        <h1>{{ article.title }}</h1>
+        <div class="article-meta">By {{ article.author }} · {{ article.date }}</div>
+        <div class="article-photo"><span>{{ article.category }}</span></div>
+        <p class="caption">{{ article.caption }}</p>
+
+        <article class="story-body">
+            {% for paragraph in article.content %}
+            <p>{{ paragraph }}</p>
+            {% endfor %}
+        </article>
+
+        <section class="related-section">
+            <h2>Related articles</h2>
+            <div class="related-grid">
+                {% for slug, item in related %}
+                <a class="related-card" href="{{ url_for('article_page', slug=slug) }}">
+                    <span>{{ item.category }}</span>
+                    <strong>{{ item.title }}</strong>
+                </a>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+</body>
+</html>
