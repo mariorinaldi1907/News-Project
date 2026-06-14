@@ -1,8 +1,8 @@
 # Island Daily - Flask News Website
 
-Island Daily is a beginner-friendly Python Flask news website with a modern Singapore newspaper-inspired layout. It includes a homepage, sticky navigation bar, article cards, full article pages, related articles, and responsive styling for desktop and mobile screens.
+Island Daily is a beginner-friendly Python Flask news website with a modern Singapore newspaper-inspired layout. It includes a homepage, sticky navigation bar, article cards, full article pages, related articles and responsive styling for desktop and mobile screens.
 
-This project is inspired by the structure and professional feel of Singapore newspaper websites, but it uses original branding, layout details, styling, and article text.
+This project is inspired by the structure and professional feel of Singapore newspaper websites, but it uses original branding, layout details, styling and article text.
 
 ## Features
 
@@ -14,7 +14,7 @@ This project is inspired by the structure and professional feel of Singapore new
 - Homepage hero article
 - Secondary article cards
 - Latest headlines sidebar
-- Homepage category sections for Singapore, Business, World, Sport, Tech, and Opinion
+- Homepage category sections for Singapore, Business, World, Sport, Tech and Opinion
 - Individual article pages
 - Related articles section
 - Original Singapore-style news content
