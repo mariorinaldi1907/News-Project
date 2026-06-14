@@ -2,8 +2,6 @@ from flask import Flask, render_template, abort
 
 app = Flask(__name__)
 
-# Simple article data stored in Python.
-# In a bigger project, this could be moved to JSON or a database.
 articles = {
     "underground-space-costs": {
         "title": "Singapore maps deeper underground routes to reduce future building delays",
@@ -127,7 +125,7 @@ def home():
     hero_slug, hero_article = next((slug, article) for slug, article in article_list if article.get("featured"))
     secondary_articles = [(slug, article) for slug, article in article_list if slug != hero_slug]
 
-    # Category order used by the navigation links and homepage sections.
+    # Category order used by the navigation links and homepage sections
     categories = ["Singapore", "Business", "World", "Sport", "Tech", "Opinion"]
     category_sections = {}
 

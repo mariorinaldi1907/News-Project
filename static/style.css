@@ -15,7 +15,6 @@ a {
     text-decoration: none;
 }
 
-/* Smooth scrolling for navbar category links */
 html {
     scroll-behavior: smooth;
 }
